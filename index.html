@@ -1,0 +1,861 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Auto Detailing | Premium Car Care</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #080808;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 22px 0;
+            background: rgba(8, 8, 8, 0.75);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d7ff3f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .nav-links a {
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-button {
+            background: #d7ff3f;
+            color: #080808;
+            padding: 11px 20px;
+            border-radius: 7px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(215,255,63,0.2);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.78) 45%, rgba(8,8,8,0.35) 100%),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85")
+                center/cover;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -200px;
+            bottom: -250px;
+            background: #d7ff3f;
+            filter: blur(180px);
+            opacity: 0.08;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding-top: 80px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #d7ff3f;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background: #d7ff3f;
+        }
+
+        h1 {
+            font-size: clamp(3.4rem, 8vw, 6.8rem);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 28px;
+        }
+
+        h1 span {
+            color: #d7ff3f;
+        }
+
+        .hero p {
+            color: #b5b5b5;
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: #d7ff3f;
+            color: #080808;
+            padding: 16px 25px;
+            border-radius: 7px;
+            font-weight: 900;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(215,255,63,0.2);
+        }
+
+        .secondary-btn {
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 16px 25px;
+            border-radius: 7px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* STATS */
+
+        .stats {
+            background: #101010;
+            border-top: 1px solid #1d1d1d;
+            border-bottom: 1px solid #1d1d1d;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat {
+            padding: 32px 20px;
+            text-align: center;
+            border-right: 1px solid #202020;
+        }
+
+        .stat:last-child {
+            border: none;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 2rem;
+            color: #d7ff3f;
+        }
+
+        .stat span {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .section-heading p {
+            color: #888;
+        }
+
+        /* SERVICES */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            background: #111;
+            border: 1px solid #202020;
+            padding: 35px;
+            border-radius: 12px;
+            transition: 0.35s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(215,255,63,0.4);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .price {
+            color: #d7ff3f;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        /* FEATURE */
+
+        .feature {
+            background: #0e0e0e;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .feature-image {
+            min-height: 500px;
+            border-radius: 15px;
+            background:
+                linear-gradient(transparent 50%, rgba(0,0,0,.65)),
+                url("https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=85")
+                center/cover;
+        }
+
+        .feature-text h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+        }
+
+        .feature-text h2 span {
+            color: #d7ff3f;
+        }
+
+        .feature-text > p {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            padding: 13px 0;
+            border-bottom: 1px solid #222;
+            color: #ccc;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            color: #d7ff3f;
+            font-weight: 900;
+            margin-right: 12px;
+        }
+
+        /* PROCESS */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 35px;
+            background: #111;
+            border-radius: 12px;
+            border: 1px solid #202020;
+        }
+
+        .number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #202020;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .process-card h3 {
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* REVIEWS */
+
+        .reviews {
+            background: #0e0e0e;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .review {
+            background: #111;
+            border: 1px solid #202020;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .stars {
+            color: #d7ff3f;
+            margin-bottom: 18px;
+            letter-spacing: 3px;
+        }
+
+        .review p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .review strong {
+            font-size: 0.9rem;
+        }
+
+        .review small {
+            display: block;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            background:
+                linear-gradient(100deg, rgba(215,255,63,.09), rgba(215,255,63,0)),
+                #111;
+            border: 1px solid rgba(215,255,63,.2);
+            border-radius: 18px;
+            padding: 70px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            color: #888;
+            max-width: 550px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #1c1c1c;
+            padding: 35px 0;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+            .services-grid,
+            .process-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .feature-image {
+                min-height: 350px;
+            }
+
+            .cta-box {
+                padding: 45px 25px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="logo">APEX<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+
+            <a href="#booking" class="nav-button">BOOK NOW</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="eyebrow">Premium Auto Detailing</div>
+
+                <h1>
+                    YOUR CAR.<br>
+                    <span>PERFECTED.</span>
+                </h1>
+
+                <p>
+                    Professional detailing for people who care about every
+                    reflection, every surface and every mile.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#booking" class="primary-btn">Book Your Detail →</a>
+                    <a href="#services" class="secondary-btn">Explore Services</a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+
+    <div class="stats">
+        <div class="container stats-grid">
+
+            <div class="stat">
+                <strong>500+</strong>
+                <span>Cars Detailed</span>
+            </div>
+
+            <div class="stat">
+                <strong>5.0★</strong>
+                <span>Average Rating</span>
+            </div>
+
+            <div class="stat">
+                <strong>8+</strong>
+                <span>Years Experience</span>
+            </div>
+
+            <div class="stat">
+                <strong>100%</strong>
+                <span>Satisfaction Focused</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+
+    <section id="services">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="eyebrow">What We Do</div>
+                <h2>DETAILING WITHOUT COMPROMISE.</h2>
+                <p>
+                    From quick refreshes to full paint correction,
+                    every service is performed with precision.
+                </p>
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Exterior Detail</h3>
+                    <p>
+                        Deep wash, wheels, tires, glass and a professional
+                        finish that brings the paint back to life.
+                    </p>
+                    <div class="price">From $99</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧼</div>
+                    <h3>Interior Detail</h3>
+                    <p>
+                        Full interior clean including carpets, seats,
+                        plastics, glass and hard-to-reach areas.
+                    </p>
+                    <div class="price">From $129</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💎</div>
+                    <h3>Full Detail</h3>
+                    <p>
+                        Our complete inside-and-out package for the ultimate
+                        transformation.
+                    </p>
+                    <div class="price">From $229</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Paint Correction</h3>
+                    <p>
+                        Reduce swirls and imperfections while restoring
+                        clarity and depth to your paint.
+                    </p>
+                    <div class="price">From $349</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Ceramic Coating</h3>
+                    <p>
+                        Long-lasting protection, hydrophobic performance
+                        and an incredible gloss.
+                    </p>
+                    <div class="price">From $599</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏁</div>
+                    <h3>Maintenance</h3>
+                    <p>
+                        Keep your vehicle looking freshly detailed with
+                        scheduled maintenance washes.
+                    </p>
+                    <div class="price">From $69</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE -->
+
+    <section class="feature">
+        <div class="container feature-grid">
+
+            <div class="feature-image"></div>
+
+            <div class="feature-text">
+
+                <div class="eyebrow">Why Apex</div>
+
+                <h2>
+                    MORE THAN A
+                    <span>CAR WASH.</span>
+                </h2>
+
+                <p>
+                    We treat every vehicle like it belongs in a showroom.
+                    Our detailers focus on the little things that make
+                    a big difference.
+                </p>
+
+                <ul class="check-list">
+                    <li>Premium professional-grade products</li>
+                    <li>Paint-safe detailing techniques</li>
+                    <li>Experienced detail specialists</li>
+                    <li>Attention to every surface</li>
+                    <li>100% satisfaction guarantee</li>
+                </ul>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+
+    <section id="process">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="eyebrow">The Process</div>
+                <h2>THREE STEPS.<br>ZERO STRESS.</h2>
+            </div>
+
+            <div class="process-grid">
+
+                <div class="process-card">
+                    <div class="number">01</div>
+                    <h3>Book</h3>
+                    <p>
+                        Choose your service and schedule a time that
+                        works for you.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="number">02</div>
+                    <h3>We Detail</h3>
+                    <p>
+                        Our team carefully cleans, restores and protects
+                        every part of your vehicle.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="number">03</div>
+                    <h3>Drive Away</h3>
+                    <p>
+                        Pick up your vehicle and enjoy that fresh-detail
+                        feeling all over again.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+
+    <section class="reviews" id="reviews">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="eyebrow">Client Reviews</div>
+                <h2>THE RESULTS SPEAK.</h2>
+            </div>
+
+            <div class="reviews-grid">
+
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "The car looked better than the day I bought it.
+                        The paint was insanely glossy."
+                    </p>
+                    <strong>Marcus T.</strong>
+                    <small>BMW M4 Owner</small>
+                </div>
+
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "Absolutely worth it. The interior looked brand
+                        new and the whole process was effortless."
+                    </p>
+                    <strong>Daniel R.</strong>
+                    <small>Porsche 911 Owner</small>
+                </div>
+
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "Best detailing service I've used. Professional,
+                        fast and the finish was incredible."
+                    </p>
+                    <strong>Alex M.</strong>
+                    <small>Audi RS6 Owner</small>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING CTA -->
+
+    <section class="cta" id="booking">
+        <div class="container">
+
+            <div class="cta-box">
+
+                <div class="eyebrow">Ready When You Are</div>
+
+                <h2>MAKE YOUR CAR<br><span>LOOK NEW.</span></h2>
+
+                <p>
+                    Give your vehicle the treatment it deserves.
+                    Book your next detail today.
+                </p>
+
+                <a href="mailto:hello@apexdetailing.com" class="primary-btn">
+                    Request an Appointment →
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="container footer-inner">
+
+            <div>
+                © 2026 APEX Auto Detailing
+            </div>
+
+            <div>
+                Premium care. Every surface. Every time.
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
+```
